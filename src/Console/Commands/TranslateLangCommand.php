@@ -62,26 +62,30 @@ class TranslateLangCommand extends Command
         $tc->setSource(\App::getLocale());
         $tc->setTarget($to);
 
-        if(file_exists(base_path().'\resources\lang\\'.\App::getLocale().'\\'. $filename . '.php')) {
-            if ($this->isValidLocale($to)) {
+        if($this->hasConnection()) {
+            if (file_exists(base_path() . '\resources\lang\\' . \App::getLocale() . '\\' . $filename . '.php')) {
+                if ($this->isValidLocale($to)) {
 
-                $array = $this->getWordsForTranslate($filename);
-                $afterTranslate = [];
-                foreach($array as $key => $word){
-                    $afterTranslate[$key] = $tc->translate($word);
+                    $array = $this->getWordsForTranslate($filename);
+                    $afterTranslate = [];
+                    foreach ($array as $key => $word) {
+                        $afterTranslate[$key] = $tc->translate($word);
+                    }
+
+                    if (!file_exists(base_path() . '\resources\lang\\' . $to)) {
+                        mkdir(base_path() . '\resources\lang\\' . $to, 0777, true);
+                    }
+
+                    $content = '<?php ' . PHP_EOL . 'return' . PHP_EOL . var_export($afterTranslate, true) . '; ?>';
+                    $this->setFileContent($content, $filename, $to);
+                } else {
+                    throw new \Exception('The location is invalid for option --to');
                 }
-
-                if(!file_exists(base_path() . '\resources\lang\\' . $to)) {
-                    mkdir(base_path() . '\resources\lang\\' . $to, 0777, true);
-                }
-
-                $content = '<?php ' . PHP_EOL . 'return' . PHP_EOL . var_export($afterTranslate, true) . '; ?>';
-                $this->setFileContent($content,$filename,$to);
             } else {
-                throw new \Exception('The location is invalid for option --to');
+                throw new \Exception('This file name does not exist in the language directory.');
             }
         } else {
-            throw new \Exception('This file name does not exist in the language directory.');
+            throw new \Exception('Error! Check your internet connection.');
         }
     }
 
@@ -91,6 +95,11 @@ class TranslateLangCommand extends Command
         } catch(Exception $e){
             throw new \Exception('Error on save the file on the target.');
         }
+    }
+
+    private function hasConnection(){
+        $connected = @fsockopen("http://www.google.com", 80);
+        return $connected;
     }
 
     private function isValidLocale($lang)
