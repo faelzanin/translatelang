@@ -71,11 +71,9 @@ class TranslateLangCommand extends Command
                     foreach ($array as $key => $word) {
                         $afterTranslate[$key] = $tc->translate($word);
                     }
-
                     if (!file_exists(base_path() . '\resources\lang\\' . $to)) {
                         mkdir(base_path() . '\resources\lang\\' . $to, 0777, true);
                     }
-
                     $content = '<?php ' . PHP_EOL . 'return' . PHP_EOL . var_export($afterTranslate, true) . '; ?>';
                     $this->setFileContent($content, $filename, $to);
                 } else {
