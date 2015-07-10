@@ -47,7 +47,7 @@ class TranslateLangCommand extends Command
 
             $this->info('The language file has been successfully translated');
         } catch(Exception $e){
-            throw new \Exception('Error in translating the language file. Try again.');
+            $this->error('Error in translating the language file. Try again.');
         }
     }
 
@@ -85,7 +85,7 @@ class TranslateLangCommand extends Command
                 throw new \Exception('This file name does not exist in the language directory.');
             }
         } else {
-            throw new \Exception('Error! Check your internet connection.');
+            throw new \Exception('Error! Check your internet connection!');
         }
     }
 
