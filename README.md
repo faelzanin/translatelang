@@ -1,7 +1,7 @@
 
 <h1>TranslateLang</h1>
 
-Translate your language files from a Laravel 5.0+ project with a simple command.
+Translate your language files from a Laravel 5.1+ project with a simple command.
 
 <h2>Installation</h2>
 
