@@ -96,7 +96,7 @@ class TranslateLangCommand extends Command
     }
 
     private function hasConnection(){
-        $connected = @fsockopen("http://www.google.com", 80);
+        $connected = @fsockopen("www.google.com", 80);
         return $connected;
     }
 
