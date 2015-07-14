@@ -1,42 +1,50 @@
 
 <h1>TranslateLang</h1>
 
-Traduza seus arquivos de linguagem de seu projeto Laravel >=5.1 com apenas um comando!
+Translate your language files from your project Laravel >= 5.1 with a simple command
 
-<h2>Instalação</h2>
+<h2>Installation</h2>
 
-Translatelang deve ser instalado dentro do diretório padrão de sua aplicação através do composer, com o comando:
+TranslateLang must be installed in the default directory of your application by the composer , with the command:
 
     composer require faelzanin/translatelang
 
-<h2>Configuração</h2>
+<h2>Configuration</h2>
 
-Após a instalação você deve configurar o  provider do TranslateLang, vá até o arquivo config/app.php e adicione a linha abaixo no array de providers:
+After installation you must configure the `provider` of TranslateLang , go to the `config/app.php` and add the following line in the array of providers:
 
     Faelzanin\Translatelang\TranslateLangProvider::class
 
-Pronto, após realizar este procedimento o comando para traduzir seus arquivos estará disponível.
+Done, after doing this, the command to translate your files will be available.
 
-<h2>Utilização</h2>
+<h2>Use</h2>
 
-Ps: Antes de executar este comando, verifique se existe uma conexão com a internet, pois este pacote, utiliza a biblioteca do Google Tradutor, para realizar as traduções.
+> Before running this command, check the existence of a connection to the Internet, because this package uses a Google translator library, to make the translations.
 
-Para traduzir seus arquivos de linguagem, abra o console e execute o comando:
+To translate your language files , open the console and run the command:
 
     php artisan translate:lang
 
-Após executar este comando irá aparecer a seguinte pergunta:
+After running this command will show the following question:
 
     What is the name of the language file you want to translate?
 
-Informe o nome do arquivo de linguagem que deseja traduzir, e aperte Enter para ir para o próximo passo:
+Enter the name of the language file, you want to translate, and press `Enter` to go to the next step:
 
     What is the location you want to be translated ? Example : en | es | pt | ru
 
-Aqui, você deve informar pra qual localização será traduzida o arquivo. Por exemplo, para português, deve informar pt .
+Here, you must report to which location the file is translated. For example, to Portuguese, inform the location pt
 
-Se tudo ocorrer bem, será mostrado uma mensagem de sucesso.
+If all goes well, it will be shown a success message.
 
     The language file has been successfully translated.
 
-E também, criado o arquivo de linguagem traduzido dentro da pasta resources/lang.
+Also, set the language translated file in the folder below:
+
+    <app>\  
+        <resources>\
+                <lang>\
+                    <location>\
+                        Filename.php
+ 
+ Done, simple and practical!
