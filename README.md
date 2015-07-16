@@ -29,7 +29,7 @@ After running this command will show the following question:
 
     What is the name of the language file you want to translate?
 
-Enter the name of the language file, you want to translate, and press `Enter` to go to the next step:
+Enter the name of the language file (example: `passwords`), you want to translate, and press `Enter` to go to the next step:
 
     What is the location you want to be translated ? Example : en | es | pt | ru
 
