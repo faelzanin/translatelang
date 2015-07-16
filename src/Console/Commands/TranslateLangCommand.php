@@ -61,7 +61,6 @@ class TranslateLangCommand extends Command
         $tc = new TranslateClient();
         $tc->setSource(\App::getLocale());
         $tc->setTarget($to);
-
         if($this->hasConnection()) {
             if (file_exists(base_path() . '\resources\lang\\' . \App::getLocale() . '\\' . $filename . '.php')) {
                 if ($this->isValidLocale($to)) {
